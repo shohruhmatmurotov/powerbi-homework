@@ -1,0 +1,83 @@
+1. How does Power BI handle large datasets in the Online Service, and what is the role of Premium Capacity in this?
+Power BI handles large datasets by storing them in memory for fast querying. However, there are limits:
+
+Pro users can only upload datasets up to 1 GB in size.
+
+Premium Capacity increases this limit significantly (up to 100 GB or more) and supports enhanced features like incremental refresh, larger models, and higher refresh frequency.
+Premium also provides dedicated resources, improving performance and scalability for large enterprise datasets.
+
+2. What are the differences between Import mode, DirectQuery, and Live Connection in Power BI Service?
+Import Mode: Data is loaded into Power BI's internal model. Fast performance, but data must be refreshed regularly.
+
+DirectQuery: Queries the source database live, without importing data. Real-time, but slower and has more limitations on modeling and DAX.
+
+Live Connection: Connects to models like SSAS or a published dataset in Power BI. Data and modeling stay at the source — Power BI only visualizes it.
+
+3. Explain deployment pipelines in Power BI Online. What stages do they include?
+Deployment pipelines allow you to manage the lifecycle of Power BI content across three environments:
+
+Development: Initial building and testing of reports, models.
+
+Test: Used to validate and QA content before releasing.
+
+Production: Final version shared with users.
+You can promote or deploy changes between stages while maintaining data source rules, permissions, and version control.
+
+4. How can Power BI Service integrate with Microsoft Teams or SharePoint for collaboration?
+Power BI integrates with:
+
+Microsoft Teams: You can pin reports/dashboards in a tab or use the Power BI app to view and share insights directly in Teams.
+
+SharePoint: You can embed Power BI reports in SharePoint Online using the Power BI web part, making reports accessible in intranet portals.
+
+5. What is the XMLA endpoint in Premium and how does it benefit developers or enterprise BI teams?
+The XMLA endpoint allows external tools (like SQL Server Management Studio or Excel) to connect to Power BI datasets for advanced operations:
+
+Supports read/write operations, useful for automating deployments.
+
+Enables third-party integrations and enterprise-scale modeling.
+It’s only available in Premium or PPU (Premium Per User) workspaces.
+
+6. Describe how usage metrics and audit logs work in Power BI Service.
+Usage metrics: Built-in reports that show how many users are viewing a report, how often, and when. Helpful for analyzing report engagement.
+
+Audit logs: Available in Microsoft 365 compliance center. Track detailed user activity like report access, data export, sharing — useful for compliance and security.
+
+7. How do you manage workspace access and permissions for different users?
+In Power BI Service, each workspace supports role-based access:
+
+Admin: Full control over the workspace.
+
+Member: Can edit and publish content.
+
+Contributor: Can create and share content, but not publish apps.
+
+Viewer: Can only view reports and dashboards.
+You assign these roles when adding users to the workspace.
+
+8. How can data governance be enforced in Power BI Service?
+Data governance can be enforced by:
+
+Setting certified datasets and promoting trusted content.
+
+Using sensitivity labels and Microsoft Purview for data classification.
+
+Applying Row-Level Security (RLS) for data protection.
+
+Monitoring activity through audit logs and admin APIs.
+
+Restricting access through workspace roles and tenant settings.
+
+9. What are the limitations of Row-Level Security when using DirectQuery or Live Connection?
+With DirectQuery, RLS can affect performance because filters are translated into SQL queries.
+
+With Live Connection, RLS must be defined in the source model (e.g., SSAS or the original dataset) — Power BI can’t apply it directly.
+
+Testing and managing RLS is also more complex in these modes compared to Import mode.
+
+10. Explain how you can refresh a dataset via Power Automate or REST API.
+Power Automate: Use the "Refresh a dataset" action in a flow. You can schedule or trigger it based on other actions (e.g., after a file upload).
+
+REST API: Use the POST /refreshes endpoint to trigger a refresh programmatically. Requires access token and dataset ID.
+This enables custom scheduling, event-based refreshes, and integration with other systems.
+
